@@ -16,14 +16,18 @@ public class PTTimeParser {
 	    if(matcher.matches()){
 	        for(int i = 1; i<=matcher.groupCount();i++){
 	            String group = matcher.group(i);
-	            int number = new Integer(group.substring(0, group.length()-1));
-	            if(matcher.group(i).endsWith("H")){
-	                hour = number;
-	            } else if(matcher.group(i).endsWith("M")){
-	                minute = number;
-	            } else if(matcher.group(i).endsWith("S")){
-	                second = number;
-	            } 
+
+	            //Group will be null if not in pattern
+	            if (group != null) {
+		            int number = new Integer(group.substring(0, group.length()-1));
+		            if(matcher.group(i).endsWith("H")){
+		                hour = number;
+		            } else if(matcher.group(i).endsWith("M")){
+		                minute = number;
+		            } else if(matcher.group(i).endsWith("S")){
+		                second = number;
+		            } 
+	        	}
 	        }
 	    }
 
